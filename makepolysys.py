@@ -15,7 +15,7 @@ def Cpqk(p,q,k):
     else:      return 0
 
 kmin = -2
-kmax = 2
+kmax =  2
 
 allk = arange(kmin, kmax+1)
 f    = [0]*len(allk) #zeros(len(allk))
@@ -65,11 +65,15 @@ for ki, k in enumerate(allk):
     coeffs.append(eqncoeffs)
     powers.append(kpowers)
 
-print('%% kmin = %02i'%kmin)
-print('%% kmax = %02i'%kmax)
-
+# Print the matlab file
 print('clear all')
 print('addpath("PNLA_MATLAB_OCTAVE");')
+
+print('%% kmin = %02i'%kmin)
+print('%% kmax = %02i'%kmax)
+print('kmin    = %i;'%kmin)
+print('kmax    = %i;'%kmax)
+
 
 # Print out the system
 for ic, coeff in enumerate(coeffs):
@@ -87,5 +91,6 @@ for ip, power in enumerate(powers):
         if (iv<len(power)-1 ): sys.stdout.write('; ')
     sys.stdout.write('];\n')
 
-print('[root d c ns check cr digits] = sparf(polysys);')
-print('disp(root)')
+print('[root d c ns check cr digits] = sparf2(polysys);')
+print('%disp(root)')
+print('calcerror(root, kmin, kmax);')
