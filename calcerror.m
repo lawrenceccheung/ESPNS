@@ -5,7 +5,7 @@ function calcerror(root, kmin, kmax)
 kvec = kmin:kmax;
 
 % These are the exact values for k = 1 to +3
-exactu = [1, 0.25, 1.0/18.0];
+exactu = [1, 0.25, 1.0/18.0, 25.0/2304.0];
 
 % make the exact root list
 exactroot=zeros(1,abs(kmin)+1);
