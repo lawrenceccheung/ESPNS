@@ -8,6 +8,7 @@
 %
 clear all
 addpath("PNLA_MATLAB_OCTAVE");
+addpath("SuiteSparse/SPQR/MATLAB")
 
 % -- Translate k index to matlab index
 ktoi = @(k,kmin) (k-kmin+1);
@@ -16,6 +17,9 @@ ktoi = @(k,kmin) (k-kmin+1);
 % Set the size of the system
 kmin = -2;
 kmax = +2;
+stol=0.5E-14;  % |k| <= 2
+%stol=2.5E-14;  % |k| <= 3
+
 
 % Set the f vector
 f    = zeros(1,length(kmin:kmax));
@@ -74,7 +78,8 @@ end
 % ------
 tic;
 
-[root, d, c, ns, check, cr, digits] = sparf2(polysys);
+%[root, d, c, ns, check, cr, digits] = sparf2(polysys);
+[root, d, c, ns, check, cr, digits] = qdsparf2(polysys, stol);
 
 elapsedtime = toc;
 calcerror(root, kmin, kmax);
