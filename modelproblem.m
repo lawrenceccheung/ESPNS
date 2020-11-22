@@ -15,10 +15,10 @@ ktoi = @(k,kmin) (k-kmin+1);
 % --
 
 % Set the size of the system
-kmin = -2;
-kmax = +2;
-stol=0.5E-14;  % |k| <= 2
-%stol=2.5E-14;  % |k| <= 3
+kmin = -3;
+kmax = +3;
+%stol=0.5E-14;  % |k| <= 2
+stol=2.5E-14;  % |k| <= 3
 
 
 % Set the f vector
